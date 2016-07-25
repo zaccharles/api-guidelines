@@ -283,7 +283,7 @@ Under UPSERT semantics, a PATCH call to a nonexistent resource is handled by the
 If a service does not support UPSERT, then a PATCH call against a resource that does not exist MUST result in an HTTP "409 Conflict" error.
 
 #### 7.4.4 Options and link headers
-OPTIONS allows a client to retrieve information about an resource, at a minimum by returning the Allow header denoting the valid method verbs for this resource.  
+OPTIONS allows a client to retrieve information about a resource, at a minimum by returning the Allow header denoting the valid method verbs for this resource.  
 
 In addition, services SHOULD include a Link header (see [RFC 5988][rfc-5988]) to point to documentation for the resource in question:
 
@@ -507,7 +507,7 @@ Because browser preflight response caches are notoriously weak, the additional r
   - Services MUST NOT contravene other API recommendations in the name of avoiding CORS preflight requests. In particular, in accordance with recommendations, most POST requests will actually require a preflight request due to the Content-Type.
   - If eliminating preflight is critical, then a service MAY support alternative mechanisms for data transfer, but the RECOMMENDED approach MUST also be supported.
 
-In addition, when appropriate services MAY support the JSONP pattern for simple, GET-only cross-domain access. In JSONP services, take a parameter indicating the format (_$format=json_) and a parameter indicating a callback (_$callback=someFunc_) and return a text/javascript document containing the JSON response wrapped in a function call with the indicated name. More on JSONP at Wikipedia: [JSONP](https://en.wikipedia.org/wiki/JSONP).
+In addition, when appropriate services MAY support the JSONP pattern for simple, GET-only cross-domain access. In JSONP, services take a parameter indicating the format (_$format=json_) and a parameter indicating a callback (_$callback=someFunc_), and return a text/javascript document containing the JSON response wrapped in a function call with the indicated name. More on JSONP at Wikipedia: [JSONP](https://en.wikipedia.org/wiki/JSONP).
 
 ## 9 Collections
 ### 9.1 Item keys
@@ -1462,7 +1462,7 @@ Non normative implementation guidance: In the final part of the sequence, when a
   ![User subscription setup][websequencediagram-user-subscription-setup]
 
 ### 14.5 Verifying subscriptions
-When subscriptions change either programmatically or in response to change via administrative UI portals, the subscribing service need to be protected from malicious or unexpected calls from services pushing potentially large volumes of notification traffic.
+When subscriptions change either programmatically or in response to change via administrative UI portals, the subscribing service needs to be protected from malicious or unexpected calls from services pushing potentially large volumes of notification traffic.
 
 For all subscriptions, whether firehose or per-user, services MUST send a verification request as part of creation or modification via portal UI or API request, before sending any other notifications.
 
@@ -1481,7 +1481,7 @@ If any challenge request does not receive the prescribed response within 5 secon
 Services MAY perform additional validations on URL ownership.
 
 ### 14.6 Receiving notifications
-Services SHOULD send notifications in response to service data change that do not include details of the changes themselves, but include enough information for the subscribing application to respond appropriately to the following process:
+Services SHOULD send notifications in response to service data changes that do not include details of the changes themselves, but include enough information for the subscribing application to respond appropriately to the following process:
 
 1. Applications MUST identify the correct cached OAuth token to use for a callback
 2. Applications MAY look up any previous delta token for the relevant scope of change
